@@ -19,17 +19,3 @@ const renderPictures = () => {
 };
 
 export {renderPictures};
-
-/*const createPicture = (elements) = {
-  const pictureElement = pictureSimilarTemplate.cloneNode(true);
-  pictureElement.querySelector('.picture__img').src = createPosts.url;
-  pictureElement.querySelector('.picture__comments').textContent = createPosts.comments.length;
-  pictureElement.querySelector('.picture__likes').textContent = createPosts.likes;
-
-  return pictureElement;
-};
-
-pictureSimilarElement.forEach(createPosts, () => {
-  const pictureElement = pictureSimilarTemplate.cloneNode(true);
-  pictureElementsList.append(pictureElement);
-});*/
