@@ -1,10 +1,10 @@
 const HASHTAGS_SYMBOLS = /^#[a-zа-ё0-9]{1,19}$/i;
-const MAX_COMMENTS_LENGHTS = 140;
+const MAX_COMMENTS_LENGTH = 140;
 const MAX_HASHTAGS_COUNT = 5;
 
 const form = document.querySelector('.img-upload__form');
-const commentField =document.querySelector('.text__description');
-const hashtagesField = document.querySelector('.text__hashtags');
+const commentField = document.querySelector('.text__description');
+const hashtagsField = document.querySelector('.text__hashtags');
 
 const pristine = new Pristine (form, {
     classTo: 'img-upload__field-wrapper',
@@ -12,9 +12,9 @@ const pristine = new Pristine (form, {
     errorTextCClass: 'img-upload__field-wrapper__error',
 });
 
-const isValidComment = (comment) => comment.lenght <= MAX_COMMENTS_LENGHTS;
+const isValidComment = (comment) => comment.length <= MAX_COMMENTS_LENGTH;
 
-const createHashtagArray = (value) => value.trim().split(' ').filter((item) => item);
+const createHashtagArray = (value) => value.trim().toLowerCase().split(' ').filter((item) => item);
 
 const isValidHashtag = (value) => {
     if (!value) {
@@ -27,30 +27,30 @@ const isValidHashtag = (value) => {
 
 const isValidCount = (value) => {
     const hashtags = createHashtagArray(value);
-    return hashtags.lenght <= MAX_HASHTAGS_COUNT;
+    return hashtags.length <= MAX_HASHTAGS_COUNT;
 };
 
 const isUniqueHashtags = (value) => {
     const hashtags = createHashtagArray(value);
     const uniqHashtags = new Set (hashtags);
-    return uniqHashtags.size === hashtags.lenghts;
+    return uniqHashtags.size === hashtags.length;
 }
 
 const addPristine = () => {
     pristine.addValidator (
-        hashtagesField,
+        hashtagsField,
         isValidHashtag,
         'Хэштег должен начинаться с "#", содержать буквы и цифры (не более 20 символов, включая #)',
     );
 
     pristine.addValidator (
-        hashtagesField,
+        hashtagsField,
         isUniqueHashtags,
         'Хэштеги не должны повторяться',
     );
 
     pristine.addValidator (
-        hashtagesField,
+        hashtagsField,
         isValidCount,
         'Нельзя указывать больше 5 хэштегов',
     );
@@ -63,6 +63,6 @@ const addPristine = () => {
 };
 
 const resetPristine = () => pristine.reset();
-const validatePristine =() => pristine.validate();
+const validatePristine = () => pristine.validate();
 
 export {resetPristine, validatePristine, addPristine};
