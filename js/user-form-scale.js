@@ -9,26 +9,26 @@ const biggerScale = document.querySelector('.scale__control--bigger');
 const smallerScale = document.querySelector('.scale__control--smaller');
 
 const changeScale = (value) => {
- img.style.transform = `scale(${+value.replace('%','') / DEVIDER_SCALE})`;
+  img.style.transform = `scale(${+value.replace('%', '') / DEVIDER_SCALE})`;
 };
 
 const removeScale = () => {
-if (input.value !== MIN_PERCENT_SCALE) {
-    input.value = `${+input.value.replace('%','') - STEP_PERCENT_SCALE}%`;
+  if (input.value !== MIN_PERCENT_SCALE) {
+    input.value = `${+input.value.replace('%', '') - STEP_PERCENT_SCALE}%`;
     changeScale(input.value);
-};
+  }
 };
 
 const addScale = () => {
-    if (input.value !== MAX_PERCENT_SCALE) {
-        input.value = `${+input.value.replace('%','') + STEP_PERCENT_SCALE}%`;
-        changeScale(input.value);
-    };
-    };
+  if (input.value !== MAX_PERCENT_SCALE) {
+    input.value = `${+input.value.replace('%', '') + STEP_PERCENT_SCALE}%`;
+    changeScale(input.value);
+  }
+};
 
 const activateScale = () => {
-    biggerScale.addEventListener('click', addScale);
-    smallerScale.addEventListener('click', removeScale);
+  biggerScale.addEventListener('click', addScale);
+  smallerScale.addEventListener('click', removeScale);
 };
 
 const resetScale = () => changeScale(input.value);
