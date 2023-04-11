@@ -1,25 +1,25 @@
 const getData = (url, onSuccess, onFail) => {
-    fetch(url)
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
-        onSuccess(data);
+      onSuccess(data);
     })
-    .catch((err)=> {
-    onFail(err);
-    })
-}
-
-const sendData =(url, onSuccess, onFail, body) => {
-    fetch(url, {
-        method: 'POST',
-        body,
-    })
-    .then((response) => {
-        if (response.ok) {
-            onSuccess();
-        } else {
-            onFail();
-        }});
+    .catch((err) => {
+      onFail(err);
+    });
 };
 
-export {getData, sendData}
+const sendData = (url, onSuccess, onFail, body) => {
+  fetch(url, {
+    method: 'POST',
+    body,
+  }).then((response) => {
+    if (response.ok) {
+      onSuccess();
+    } else {
+      onFail();
+    }
+  });
+};
+
+export {getData, sendData};

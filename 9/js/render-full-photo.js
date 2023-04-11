@@ -33,12 +33,12 @@ const renderComments = () => {
   showingComments += COMMENTS_COUNT;
   showingComments = Math.min(showingComments, comments.length);
   currentComments.forEach((element) => commentsList.append(fillComment(element)));
-  fillCommentsCount ();
+  fillCommentsCount();
 
-  if (showingComments >= comments.length){
-    pictureCommentsLoader.classList.add ('hidden');
+  if (showingComments >= comments.length) {
+    pictureCommentsLoader.classList.add('hidden');
   } else {
-    pictureCommentsLoader.classList.remove ('hidden');
+    pictureCommentsLoader.classList.remove('hidden');
   }
 };
 
@@ -58,7 +58,7 @@ const closeFullPhoto = () => {
   pictureCommentsLoader.removeEventListener('click', onPictureCommentsLoaderClick);
 };
 
-function onPictureCommentsLoaderClick (evt) {
+function onPictureCommentsLoaderClick(evt) {
   evt.preventDefault();
   renderComments();
 }
@@ -68,7 +68,7 @@ function onCloseFullPhotoButtonClick(evt) {
   closeFullPhoto();
 }
 
-function onCloseKeydownDocument (evt) {
+function onCloseKeydownDocument(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeFullPhoto();
