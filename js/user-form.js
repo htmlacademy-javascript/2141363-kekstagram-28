@@ -46,13 +46,13 @@ const onFormSubmit = (evt) => {
   }
 };
 
-const openUploadFile = () => {
+function openUploadFile () {
   uploadContainer.classList.remove('hidden');
   document.body.classList.add('.modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
-};
+}
 
-const closeUploadFile = () => {
+function closeUploadFile () {
   form.reset();
   resetScale();
   resetPristine();
@@ -60,7 +60,7 @@ const closeUploadFile = () => {
   uploadContainer.classList.add('hidden');
   document.body.classList.remove('.modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-};
+}
 
 const addFormAction = () => {
   uploadFileInput.addEventListener('change', onFileInputChange);

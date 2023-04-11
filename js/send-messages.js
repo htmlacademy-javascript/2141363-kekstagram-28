@@ -24,7 +24,7 @@ function onDocumentKeydown(evt) {
     }
     closeSuccessMessage();
   }
-};
+}
 
 const onSuccessMessageButtonClick = (evt) => {
   evt.preventDefault();
