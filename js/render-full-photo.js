@@ -42,7 +42,7 @@ const renderComments = () => {
   }
 };
 
-const fullBigPicture = (data) => {
+const fillBigPicture = (data) => {
   pictureImage.src = data.url;
   pictureLikes.textContent = data.likes;
   pictureComments.textContent = data.comments.length;
@@ -51,7 +51,7 @@ const fullBigPicture = (data) => {
 
 const closeFullPhoto = () => {
   pictureContainer.classList.add('hidden');
-  document.body.classList.remove('.modal-open');
+  document.body.classList.remove('modal-open');
   closeModalButton.removeEventListener('click', onCloseFullPhotoButtonClick);
   document.removeEventListener('keydown', onCloseKeydownDocument);
   showingComments = 0;
@@ -78,8 +78,8 @@ function onCloseKeydownDocument(evt) {
 const openFullPhoto = (data) => {
   commentsList.innerHTML = ' ';
   pictureContainer.classList.remove('hidden');
-  document.body.classList.add('.modal-open');
-  fullBigPicture(data);
+  document.body.classList.add('modal-open');
+  fillBigPicture(data);
   comments = data.comments;
   renderComments();
   closeModalButton.addEventListener('click', onCloseFullPhotoButtonClick);

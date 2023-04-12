@@ -1,5 +1,5 @@
 import {activateScale, resetScale} from './user-form-scale.js';
-import {resetPristine, validatePristine, addPristine} from './user-form-valid.js';
+import {resetPristine, validatePristine, addPristine} from './user-form-validate.js';
 import {sendData} from './api.js';
 import {changeEffect, resetFilter, createSlider} from './user-form-effects.js';
 import {renderSuccussMessage, renderFailMessage} from './send-messages.js';
@@ -48,7 +48,7 @@ const onFormSubmit = (evt) => {
 
 function openUploadFile () {
   uploadContainer.classList.remove('hidden');
-  document.body.classList.add('.modal-open');
+  document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
@@ -58,7 +58,7 @@ function closeUploadFile () {
   resetPristine();
   resetFilter();
   uploadContainer.classList.add('hidden');
-  document.body.classList.remove('.modal-open');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
 }
 

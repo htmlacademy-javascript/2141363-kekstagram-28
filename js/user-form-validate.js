@@ -16,7 +16,7 @@ const pristine = new Pristine(form, {
   errorTextCClass: 'img-upload__field-wrapper__error',
 });
 
-const isValidComment = (comment) => comment.length <= MAX_COMMENTS_LENGTH;
+const validateComments = (comment) => comment.length <= MAX_COMMENTS_LENGTH;
 
 const createHashtagArray = (value) =>
   value
@@ -25,7 +25,7 @@ const createHashtagArray = (value) =>
     .split(' ')
     .filter((item) => item);
 
-const isValidHashtag = (value) => {
+const validateHashtags = (value) => {
   if (!value) {
     return true;
   }
@@ -34,22 +34,22 @@ const isValidHashtag = (value) => {
   return hashtags.every((test) => HASHTAGS_SYMBOLS.test(test));
 };
 
-const isValidCount = (value) => {
+const validateCount = (value) => {
   const hashtags = createHashtagArray(value);
   return hashtags.length <= MAX_HASHTAGS_COUNT;
 };
 
-const isUniqueHashtags = (value) => {
+const validateUniqueHashtags = (value) => {
   const hashtags = createHashtagArray(value);
   const uniqHashtags = new Set(hashtags);
   return uniqHashtags.size === hashtags.length;
 };
 
 const addPristine = () => {
-  pristine.addValidator(hashtagsField, isValidHashtag, VALID_HASHTAG_TEXT, 1, true);
-  pristine.addValidator(hashtagsField, isUniqueHashtags, UNIQ_HASHTAG_TEXT, 1, true);
-  pristine.addValidator(hashtagsField, isValidCount, COUNT_HASHTAG_TEXT, 1, true);
-  pristine.addValidator(commentField, isValidComment, VALID_COMMENT_TEXT);
+  pristine.addValidator(hashtagsField, validateHashtags, VALID_HASHTAG_TEXT, 1, true);
+  pristine.addValidator(hashtagsField, validateUniqueHashtags, UNIQ_HASHTAG_TEXT, 1, true);
+  pristine.addValidator(hashtagsField, validateCount, COUNT_HASHTAG_TEXT, 1, true);
+  pristine.addValidator(commentField, validateComments, VALID_COMMENT_TEXT);
 };
 
 const resetPristine = () => pristine.reset();
