@@ -18,9 +18,10 @@ let comments = [];
 
 const fillComment = (element) => {
   const commentElement = comment.cloneNode(true);
-  commentElement.querySelector('.social__picture').src = element.avatar;
-  commentElement.querySelector('.social__picture').alt = element.name;
-  commentElement.querySelector('.social__text').textContent = element.message;
+  const img = document.querySelector('.social__picture');
+  img.src = element.avatar;
+  img.alt = element.name;
+  img.textContent = element.message;
   return commentElement;
 };
 

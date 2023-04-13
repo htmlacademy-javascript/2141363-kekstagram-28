@@ -7,6 +7,7 @@ const ERROR_TIMEOUT = 7000;
 const ERROR_TEXT = 'Произошла ошибка загрузки.';
 const pictureList = document.querySelector('.pictures');
 const pictureSimilarTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const fragment = new DocumentFragment();
 
 const createPicture = (data) => {
   const pictureElement = pictureSimilarTemplate.cloneNode(true);
@@ -19,11 +20,12 @@ const createPicture = (data) => {
     openFullPhoto(data);
   });
 
-  return pictureElement;
+  fragment.append(pictureElement);
 };
 
 const renderPictures = (data) => {
-  data.forEach((item) => pictureList.append(createPicture(item)));
+  data.forEach((item) => createPicture(item));
+  pictureList.append(fragment);
 };
 
 const onGetSuccess = (data) => {
@@ -33,15 +35,7 @@ const onGetSuccess = (data) => {
 
 const onGetFail = () => {
   const errorBlock = document.createElement('div');
-  errorBlock.style.position = 'fixed';
-  errorBlock.style.top = '0';
-  errorBlock.style.left = '0';
-  errorBlock.style.width = '100%';
-  errorBlock.style.height = '100px';
-  errorBlock.style.color = 'red';
-  errorBlock.style.textAlign = 'center';
-  errorBlock.style.padding = '20px';
-  errorBlock.style.backgroundColor = 'black';
+  errorBlock.classList.add('error-block');
   errorBlock.textContent = ERROR_TEXT;
   document.body.append(errorBlock);
 
